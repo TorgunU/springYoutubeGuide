@@ -1,15 +1,29 @@
 package ru.course.springstudents.model;
 
+import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Value;
+
 import java.time.LocalDate;
 import java.util.Date;
 
+@Entity
+@Table(name = "student")
 public class Student {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
+    @Column(name = "firstname")
     private String firstName;
+
+    @Column(name = "lastname")
     private String lastName;
-    private LocalDate date;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "age")
     private int age;
 
     public Student() {
@@ -18,9 +32,12 @@ public class Student {
     public Student(String firstName, String lastName, LocalDate date, String email, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.date = date;
         this.email = email;
         this.age = age;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -39,13 +56,6 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
 
     public String getEmail() {
         return email;
@@ -61,5 +71,15 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

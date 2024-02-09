@@ -1,5 +1,7 @@
 package ru.course.springstudents.service;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.course.springstudents.model.Student;
 
@@ -10,14 +12,11 @@ import java.util.*;
 public class LocalStudentService implements StudentService {
     private final Map<Integer, Student> STUDENTS = new HashMap();
 
-    public LocalStudentService() {
-        STUDENTS.put(20, new Student(
-                "Ivan", "Torgun", LocalDate.now(), "ivan@mail.com", 20)
-        );
+    private SessionFactory sessionFactory1;
 
-        STUDENTS.put(43, new Student(
-                "Petr", "Petrov", LocalDate.now(), "petr@mail.com", 43)
-        );
+    @Autowired
+    public LocalStudentService() {
+
     }
 
     @Override

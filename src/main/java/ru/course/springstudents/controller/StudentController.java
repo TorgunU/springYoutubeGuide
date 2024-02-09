@@ -21,7 +21,8 @@ public class StudentController {
 
     @GetMapping
     public List<Student> findAllStudents() {
-        return studentService.findAllStudents();
+        List<Student> students = studentService.findAllStudents();
+        return students;
     }
 
     @PostMapping("save_students")
@@ -35,7 +36,7 @@ public class StudentController {
     }
 
     @PutMapping("update_students")
-    public Student updateStudent(Student student) {
+    public Student updateStudent(@RequestBody Student student) {
         return studentService.updateStudent(student);
     }
 
