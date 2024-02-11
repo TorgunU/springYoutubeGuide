@@ -2,6 +2,7 @@ package ru.course.springstudents.service;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import ru.course.springstudents.model.Student;
 
@@ -16,7 +17,13 @@ public class LocalStudentService implements StudentService {
 
     @Autowired
     public LocalStudentService() {
+        STUDENTS.put(0, new Student(
+                "Ivan", "Torgun", "ivan@mail.com", 20)
+        );
 
+        STUDENTS.put(1, new Student(
+                "Petr", "Petrov", "petr@mail.com", 43)
+        );
     }
 
     @Override

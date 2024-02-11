@@ -26,21 +26,25 @@ public class RemoteStudentService implements StudentService {
     }
 
     @Override
+    @Transactional
     public Student saveStudent(Student student) {
         return studentRepository.save(student);
     }
 
     @Override
+    @Transactional
     public Student updateStudent(Student student) {
         return studentRepository.save(student);
     }
 
     @Override
+    @Transactional
     public Student findBySurname(String lastName) {
         return studentRepository.findByLastName(lastName);
     }
 
     @Override
+    @Transactional
     public void deleteStudent(String email) {
         studentRepository.deleteByEmail(email);
     }
